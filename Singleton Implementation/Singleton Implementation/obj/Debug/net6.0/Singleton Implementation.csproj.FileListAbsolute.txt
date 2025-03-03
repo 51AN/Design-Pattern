@@ -1,0 +1,14 @@
+D:\SWE-20\7th semseter\Design Pattern\C# Projects\Singleton Implementation\Singleton Implementation\bin\Debug\net6.0\Singleton Implementation.exe
+D:\SWE-20\7th semseter\Design Pattern\C# Projects\Singleton Implementation\Singleton Implementation\bin\Debug\net6.0\Singleton Implementation.deps.json
+D:\SWE-20\7th semseter\Design Pattern\C# Projects\Singleton Implementation\Singleton Implementation\bin\Debug\net6.0\Singleton Implementation.runtimeconfig.json
+D:\SWE-20\7th semseter\Design Pattern\C# Projects\Singleton Implementation\Singleton Implementation\bin\Debug\net6.0\Singleton Implementation.dll
+D:\SWE-20\7th semseter\Design Pattern\C# Projects\Singleton Implementation\Singleton Implementation\bin\Debug\net6.0\Singleton Implementation.pdb
+D:\SWE-20\7th semseter\Design Pattern\C# Projects\Singleton Implementation\Singleton Implementation\obj\Debug\net6.0\Singleton Implementation.GeneratedMSBuildEditorConfig.editorconfig
+D:\SWE-20\7th semseter\Design Pattern\C# Projects\Singleton Implementation\Singleton Implementation\obj\Debug\net6.0\Singleton Implementation.AssemblyInfoInputs.cache
+D:\SWE-20\7th semseter\Design Pattern\C# Projects\Singleton Implementation\Singleton Implementation\obj\Debug\net6.0\Singleton Implementation.AssemblyInfo.cs
+D:\SWE-20\7th semseter\Design Pattern\C# Projects\Singleton Implementation\Singleton Implementation\obj\Debug\net6.0\Singleton Implementation.csproj.CoreCompileInputs.cache
+D:\SWE-20\7th semseter\Design Pattern\C# Projects\Singleton Implementation\Singleton Implementation\obj\Debug\net6.0\Singleton Implementation.dll
+D:\SWE-20\7th semseter\Design Pattern\C# Projects\Singleton Implementation\Singleton Implementation\obj\Debug\net6.0\refint\Singleton Implementation.dll
+D:\SWE-20\7th semseter\Design Pattern\C# Projects\Singleton Implementation\Singleton Implementation\obj\Debug\net6.0\Singleton Implementation.pdb
+D:\SWE-20\7th semseter\Design Pattern\C# Projects\Singleton Implementation\Singleton Implementation\obj\Debug\net6.0\Singleton Implementation.genruntimeconfig.cache
+D:\SWE-20\7th semseter\Design Pattern\C# Projects\Singleton Implementation\Singleton Implementation\obj\Debug\net6.0\ref\Singleton Implementation.dll
