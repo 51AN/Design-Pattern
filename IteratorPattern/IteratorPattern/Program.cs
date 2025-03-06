@@ -31,7 +31,9 @@ public class BookIterator : IBookIterator
 
     public BookIterator(List<Book> books)
     {
-        this.books = books ?? new List<Book>(); //handling the case of null 
+        //this.books = books ?? new List<Book>(); In this case, we were violating the rule of SRP. Concrete iterator should not modify books list by making it a new list if null
+        this.books = books;
+
     }
 
     public bool MoveNext()
