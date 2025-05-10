@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34031.279
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "200042151_FinalTask", "200042151_FinalTask\200042151_FinalTask.csproj", "{1EEE1F57-D6DC-4DB1-98F5-582DE5430DF0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "200042151_FinalTask", "200042151_FinalTask\200042151_FinalTask.csproj", "{1EEE1F57-D6DC-4DB1-98F5-582DE5430DF0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdmissionServicesTests", "AdmissionServicesTests\AdmissionServicesTests.csproj", "{7163B9D1-D03B-4506-8C08-26164D01E743}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{1EEE1F57-D6DC-4DB1-98F5-582DE5430DF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1EEE1F57-D6DC-4DB1-98F5-582DE5430DF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1EEE1F57-D6DC-4DB1-98F5-582DE5430DF0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7163B9D1-D03B-4506-8C08-26164D01E743}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7163B9D1-D03B-4506-8C08-26164D01E743}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7163B9D1-D03B-4506-8C08-26164D01E743}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7163B9D1-D03B-4506-8C08-26164D01E743}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
