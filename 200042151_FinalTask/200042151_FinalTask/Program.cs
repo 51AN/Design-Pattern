@@ -106,13 +106,27 @@ public class ThresholdBasedDistribution : IDistributionStrategy
                 activeRooms = center.GetActiveRooms();
             }
 
-            // Find all active rooms in the center that still have enough available seats
+         
+            // Check if no active rooms pass the threshold --> activate 1 more room
             var availableRooms = activeRooms
                 .Where(r => r.HasAvailableSeat(threshold))
-                .OrderBy(r => Guid.NewGuid());
+                .ToList();
 
-            // Return the first suitable room
-            foreach (var room in availableRooms)
+            if (!availableRooms.Any())
+            {
+                var nextInactive = center.GetInactiveRooms().FirstOrDefault();
+                if (nextInactive != null)
+                {
+                    nextInactive.IsActive = true;
+                    activeRooms = center.GetActiveRooms();
+                    availableRooms = activeRooms
+                        .Where(r => r.HasAvailableSeat(threshold))
+                        .ToList();
+                }
+            }
+
+            // Randomize and allocate
+            foreach (var room in availableRooms.OrderBy(r => Guid.NewGuid()))
                 return room;
         }
 
@@ -171,7 +185,27 @@ public class Program
 {
     public static void Main()
     {
+        var centerA = new Center("Center A");
+        centerA.AddRoom(new Room("R1", "Building A", 10));
+        centerA.AddRoom(new Room("R2", "Building A", 10));
+        centerA.AddRoom(new Room("R3", "Building A", 10));
+        centerA.AddRoom(new Room("R4", "Building A", 10));
 
+        var centerB = new Center("Center B");
+        centerB.AddRoom(new Room("R5", "Building B", 10));
+        centerB.AddRoom(new Room("R6", "Building B", 10));
+        centerB.AddRoom(new Room("R7", "Building B", 10));
+
+        var service = AllocationService.Instance;
+        service.AddCenter(centerA);
+        service.AddCenter(centerB);
+
+        service.SetDistributionStrategy(new ThresholdBasedDistribution(minRoomsPerCenter: 3, threshold: 0.15));
+
+        for (int i = 0; i < 60; i++)
+        {
+            service.ApplyStudent($"S{i + 1}");
+        }
 
     }
 }
