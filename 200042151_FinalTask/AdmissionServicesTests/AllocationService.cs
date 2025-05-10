@@ -25,7 +25,7 @@ namespace AdmissionServicesTests
             centerB.AddRoom(new Room("R4", "Building B", 2));
             centerB.AddRoom(new Room("R5", "Building B", 2));
 
-            // Reset singleton (Reflection or helper if needed)
+            // Reset singleton 
             typeof(AllocationService)
                 .GetField("_instance", System.Reflection.BindingFlags.Static | System.Reflection.BindingFlags.NonPublic)!
                 .SetValue(null, null);
@@ -71,5 +71,73 @@ namespace AdmissionServicesTests
 
             Assert.Throws<InvalidOperationException>(() => service.ApplyStudent("OverflowStudent"));
         }
+
+        [Test]
+        public void TestRoomAssignmentRespectsThreshold()
+        {
+            // Fill up a room beyond the threshold so it shouldn't be selected
+            var room = centerA.Rooms.First();
+            room.IsActive = true;
+            room.AssignSeat();
+            room.AssignSeat(); // Fully occupied (2/2), threshold 0.25 will fail
+
+            service.ApplyStudent("S1");
+
+            // Room should not have been selected, total occupied should be 3
+            int totalOccupied = centerA.Rooms.Concat(centerB.Rooms).Sum(r => r.OccupiedSeats);
+            Assert.AreEqual(3, totalOccupied);
+        }
+
+        [Test]
+        public void TestInactiveRoomStaysInactiveIfNotNeeded()
+        {
+            // Already 2 active rooms should be enough per minRoomsPerCenter
+            centerA.Rooms[0].IsActive = true;
+            centerA.Rooms[1].IsActive = true;
+            centerA.Rooms[2].IsActive = false;
+
+            service.ApplyStudent("S1");
+
+            Assert.IsFalse(centerA.Rooms[2].IsActive); // R3 should not have been activated
+        }
+
+        [Test]
+        public void TestNewRoomActivatedWhenThresholdNotMet()
+        {
+            // Fill up the only active room to make threshold fail
+            var r1 = centerA.Rooms[0];
+            r1.IsActive = true;
+            r1.AssignSeat(); r1.AssignSeat(); // Full
+
+            // Only one active room and it's full — should activate another
+            service.ApplyStudent("S1");
+
+            Assert.IsTrue(centerA.Rooms.Any(r => r.IsActive && r != r1));
+        }
+
+        [Test]
+        public void TestMultipleStudentsAssignedToDifferentRooms()
+        {
+            service.ApplyStudent("S1");
+            service.ApplyStudent("S2");
+            service.ApplyStudent("S3");
+
+            var occupiedRooms = centerA.Rooms.Concat(centerB.Rooms).Where(r => r.OccupiedSeats > 0).ToList();
+
+            Assert.AreEqual(3, occupiedRooms.Count);
+        }
+
+        [Test]
+        public void TestApplyStudentIncrementsOccupiedSeats()
+        {
+            var before = centerA.Rooms.Concat(centerB.Rooms).Sum(r => r.OccupiedSeats);
+
+            service.ApplyStudent("S1");
+
+            var after = centerA.Rooms.Concat(centerB.Rooms).Sum(r => r.OccupiedSeats);
+
+            Assert.AreEqual(before + 1, after);
+        }
+
     }
 }
