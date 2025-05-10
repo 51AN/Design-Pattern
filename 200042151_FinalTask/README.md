@@ -84,7 +84,7 @@ This C# solution is organized into two main folders:
 |------------------|-----------------------------|-------------------------------------------------------------------|
 | Strategy          | `Allocation.cs`, `Migration.cs` | Allows plugging in interchangeable logic for allocation/migration |
 | Singleton         | `Allocation.cs`             | Controls access to a single allocation service instance           |
-| State             | `Migration.cs`              | Potential for modeling student decision states                    |
+| State             | `Migration.cs`              | Modeling student decision states                    |
 
 ---
 
